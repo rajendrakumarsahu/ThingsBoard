@@ -1,24 +1,16 @@
 import os
-import RPi.GPIO as GPIO
-import dht11
 import time
 import sys
-#import Adafruit_DHT as dht
+import Adafruit_DHT as dht
 import paho.mqtt.client as mqtt
 import json
 
-# initialize GPIO
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
-#GPIO.cleanup()
 THINGSBOARD_HOST = 'demo.thingsboard.io'
-ACCESS_TOKEN = 'Od13UATandxRHHjXMdvr'
+ACCESS_TOKEN = 'DHT22_DEMO_TOKEN'
 
 # Data capture and upload interval in seconds. Less interval will eventually hang the DHT22.
 INTERVAL=2
 
-# read data using Pin GPIO21 
-instance = dht11.DHT11(pin=21)
 sensor_data = {'temperature': 0, 'humidity': 0}
 
 next_reading = time.time() 
@@ -35,9 +27,8 @@ client.loop_start()
 
 try:
     while True:
-        result = instance.read()
-        temperature = result.temperature
-        humidity = round(result.humidity, 2)
+        humidity,temperature = dht.read_retry(dht.DHT22, 4)
+        humidity = round(humidity, 2)
         temperature = round(temperature, 2)
         print(u"Temperature: {:g}\u00b0C, Humidity: {:g}%".format(temperature, humidity))
         sensor_data['temperature'] = temperature
