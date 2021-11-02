@@ -34,7 +34,7 @@ client.loop_start()
 try:
 while True:
 result = instance.read()
-if result.is_valid():
+#if result.is_valid():
 temperature = result.temperature
 humidity = round(result.humidity, 2)
 temperature = round(temperature, 2)
