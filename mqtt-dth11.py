@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 import dht11
 import time
 import sys
-import Adafruit_DHT as dht
+#import Adafruit_DHT as dht
 import paho.mqtt.client as mqtt
 import json
 
