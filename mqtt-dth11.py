@@ -6,7 +6,7 @@ import paho.mqtt.client as mqtt
 import json
 
 THINGSBOARD_HOST = 'demo.thingsboard.io'
-ACCESS_TOKEN = 'DHT22_DEMO_TOKEN'
+ACCESS_TOKEN = 'Od13UATandxRHHjXMdvr'
 
 # Data capture and upload interval in seconds. Less interval will eventually hang the DHT22.
 INTERVAL=2
@@ -27,7 +27,7 @@ client.loop_start()
 
 try:
     while True:
-        humidity,temperature = dht.read_retry(dht.DHT22, 4)
+        humidity,temperature = dht.read_retry(dht.DHT11, 21)
         humidity = round(humidity, 2)
         temperature = round(temperature, 2)
         print(u"Temperature: {:g}\u00b0C, Humidity: {:g}%".format(temperature, humidity))
