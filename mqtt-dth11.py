@@ -6,7 +6,7 @@ import paho.mqtt.client as mqtt
 import json
 
 THINGSBOARD_HOST = 'demo.thingsboard.io'
-ACCESS_TOKEN = 'Od13UATandxRHHjXMdvr'
+ACCESS_TOKEN = 'ouCaJZlMqq1EzlrR5FEI'
 
 # Data capture and upload interval in seconds. Less interval will eventually hang the DHT22.
 INTERVAL=2
